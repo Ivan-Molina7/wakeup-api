@@ -16,6 +16,7 @@ import { loginUsuario } from "./controllers/loginUsuario.js";
 import { getIndex } from "./controllers/getIndex.js";
 import { controlarSesion } from "./middlewares/controlarSesion.js";
 import { logoutUsuario } from "./controllers/logoutUsuario.js";
+import { getUsuarios } from "./controllers/getUsuarios.js";
 
 
 // creamos la app de express
@@ -34,7 +35,8 @@ app.use(mostrarDatosRequest);
 
 app.post("/registrar", postUsuario)
 app.post("/login", loginUsuario)
-
+// Este endpoint te dirije a la pagina principal
+app.get("/", getIndex)
 
 //este middleware sirve para controlar la sesion de los usuarios y que no se pueda acceder sin iniciar sesion a los endpoints
 app.use(controlarSesion)
@@ -42,8 +44,8 @@ app.use(controlarSesion)
 
 //este endpoint sirve para cerrar la sesion 
 app.post("/logout", logoutUsuario)
-// Este endpoint te dirije a la pagina principal
-app.get("/", getIndex)
+
+app.get("/usuarios", getUsuarios)
 // Este endpoint obtiene todos los proyectos de la base de datos
 app.get("/proyectos", getProyectos); 
 // Este endpoint obtiene un proyecto de la base de datos por su id

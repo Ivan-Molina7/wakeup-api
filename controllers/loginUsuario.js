@@ -22,7 +22,7 @@ export const loginUsuario = async (req, res, next) => {
       // si todo sale bien
       .then(() => {
         // devuelvo el token
-        res.json({ session: usuario.session, user: usuario });
+        res.json({ session: usuario.session, user: usuario._id, nombre: usuario.nombre, apellido: usuario.apellido });
       })
       .catch((error) => {
         // si hay un error, lo paso al middleware de manejo de errores

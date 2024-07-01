@@ -14,7 +14,8 @@ const schemaProyecto = new Schema({
     type: String,
     enum: ["Sin empezar", "En progreso", "Finalizado"],
     default: "Sin empezar"
-  }
+  },
+  usuario: { type: Schema.Types.ObjectId, ref: 'Usuario', required: true } // Referencia al modelo Usuario
 });
 
 // Exportar el modelo
