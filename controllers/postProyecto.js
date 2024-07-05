@@ -2,7 +2,7 @@ import { ModeloProyecto } from "../database/models/ModeloProyecto.js";
 import { obtenerProximoId } from "../utils/functions.js";
 
 export const postProyecto = async (req, res, next) => { 
-    const {titulo, descripcion, prioridad, estado, usuario} = req.body;
+    const {titulo, descripcion, prioridad, estado, usuario, categoria} = req.body;
     const nuevoProyecto = new ModeloProyecto()
 
     nuevoProyecto.id =  await obtenerProximoId(ModeloProyecto)
@@ -11,6 +11,7 @@ export const postProyecto = async (req, res, next) => {
     nuevoProyecto.prioridad = prioridad
     nuevoProyecto.estado = estado
     nuevoProyecto.usuario = usuario
+    nuevoProyecto.categoria = categoria
 
     nuevoProyecto.save()
     .then((data) => {

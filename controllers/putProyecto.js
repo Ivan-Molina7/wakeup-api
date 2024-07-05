@@ -2,13 +2,14 @@ import { ModeloProyecto } from "../database/models/ModeloProyecto.js";
 
 export const putProyecto = async (req, res, next) => {
     const idProyecto = req.params.id;
-    const {titulo, descripcion, prioridad, estado} = req.body;
+    const {titulo, descripcion, prioridad, estado, categoria} = req.body;
     const datosNuevos = {};
 
     if (titulo) datosNuevos.titulo = titulo;
     if (descripcion) datosNuevos.descripcion = descripcion;
     if (prioridad) datosNuevos.prioridad = prioridad;
     if (estado) datosNuevos.estado = estado;
+    if (categoria) datosNuevos.categoria = categoria;
 
     ModeloProyecto.updateOne({id: idProyecto}, datosNuevos)
     .then((data) => {

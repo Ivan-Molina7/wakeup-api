@@ -7,8 +7,8 @@ export const getProyectos = async (req, res, next) => {
   const filtroTitulo = formatearFiltrosDB(req.query.titulo);
   const filtroPrioridad = formatearFiltrosDB(req.query.prioridad);
   const filtroEstado = formatearFiltrosDB(req.query.estado);
-  const filtroIdUsuario = req.query.idUsuario
-  
+  const filtroIdUsuario = req.query.idUsuario;
+  const filtroCategoria = formatearFiltrosDB(req.query.categoria);
   // obtengo los filtros
   const filtros = {};
   //
@@ -16,6 +16,7 @@ export const getProyectos = async (req, res, next) => {
   if (filtroPrioridad) filtros.prioridad = filtroPrioridad;
   if (filtroEstado) filtros.estado = filtroEstado;
   if (filtroIdUsuario) filtros.usuario = filtroIdUsuario;
+  if (filtroCategoria) filtros.categoria = filtroCategoria;
 
     ModeloProyecto.find(filtros)
     .then(data => {
